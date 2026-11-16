@@ -35,12 +35,6 @@ Vai ser testado:
 - loans: cadastrar usuário, fazer login, criar, listar e devolver empréstimo.
 - A comunicação entre o loans e o catalog.
 
-Não vai ser testado:
-
-- Banco de dados, porque os dados ficam só na memória.
-- Tela, porque o sistema só tem API.
-- Teste de carga e de segurança.
-
 ### 2. Estratégia
 
 - Estático: o PMD procura erros comuns no código.
