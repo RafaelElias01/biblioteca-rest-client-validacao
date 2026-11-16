@@ -1,54 +1,48 @@
 # Plano de Teste: BibliotecaRestClient
 
-Dois microsserviços Quarkus que se comunicam por REST Client: **catalog** (porta 9080, livros) e **loans** (porta 9081, usuários, login JWT e empréstimos).
+Sistema de biblioteca com dois serviços: o catalog (porta 9080), que cuida dos livros, e o loans (porta 9081), que cuida dos usuários, do login e dos empréstimos.
 
 ## 1. Escopo
 
-**Será testado**
+Vai ser testado:
 
-- catalog: cadastrar, listar (com filtro), buscar, emprestar e devolver livro.
-- loans: cadastrar usuário, login (JWT), criar, listar e devolver empréstimos.
-- Integração entre loans e catalog.
+- catalog: cadastrar, listar, buscar, emprestar e devolver livro.
+- loans: cadastrar usuário, fazer login, criar, listar e devolver empréstimo.
+- A comunicação entre o loans e o catalog.
 
-**Não será testado**
+Não vai ser testado:
 
-- Persistência (os dados ficam em memória) e interface gráfica (o sistema só tem API REST).
-- Testes de carga e de segurança.
+- Banco de dados, porque os dados ficam só na memória.
+- Tela, porque o sistema só tem API.
+- Teste de carga e de segurança.
 
 ## 2. Estratégia
 
-| Nível | O que valida | Ferramentas |
-|---|---|---|
-| Estático | Más práticas no código | PMD |
-| Unitário | Cada classe isolada (catalog simulado com Mockito) | JUnit 5, Mockito, JaCoCo |
-| Componente | Cada serviço pela API REST | `@QuarkusTest`, RestAssured |
-| Sistema | Os dois serviços reais no ar, pela API | RestAssured, JUnit 5 |
+- Estático: o PMD procura erros comuns no código.
+- Unitário: testa cada classe sozinha, com JUnit e Mockito. O JaCoCo mede a cobertura.
+- Componente: testa cada serviço pela API, com RestAssured.
+- Sistema: testa os dois serviços juntos, também pela API.
 
-Os testes cobrem casos de sucesso, de falha (404, 409, 401) e de borda. Não há teste de interface porque o sistema não tem interface web.
+Os testes olham o que dá certo, o que dá erro (404, 409, 401) e casos de limite.
 
 ## 3. Critérios de entrada e saída
 
-**Entrada:** o código compila e os dois serviços sobem nas portas 9080 e 9081.
-
-**Saída:** `mvn verify` com BUILD SUCCESS em catalog e loans, PMD sem violações acima do limite e cobertura de linhas de pelo menos 80%. Os testes de sistema passam.
+- Entrada: o código compila e os dois serviços sobem.
+- Saída: `mvn verify` passa nos dois serviços, o PMD não reprova e a cobertura é de pelo menos 80%. Os testes de sistema passam.
 
 ## 4. Riscos e mitigação
 
-| Risco | Mitigação |
-|---|---|
-| O teste de sistema depende dos dois serviços no ar | Subir catalog e loans antes de rodar |
-| O loans depende do catalog | No componente o catalog é simulado; no sistema usa-se o real |
-| O estado fica em memória e vaza entre testes | Cada teste cria seus próprios dados |
+- O teste de sistema precisa dos dois serviços ligados: ligar os dois antes de rodar.
+- O loans depende do catalog: nos testes de componente o catalog é simulado.
+- Os dados ficam na memória e podem sobrar de um teste para o outro: cada teste cria seus próprios dados.
 
 ## 5. Cronograma
 
-| Semana | Atividade |
-|---|---|
-| 1 | Plano de teste, PMD e JaCoCo |
-| 2 | Testes unitários |
-| 3 | Testes de componente |
-| 4 | Testes de sistema e ajustes finais |
+- Semana 1: plano de teste, PMD e JaCoCo.
+- Semana 2: testes unitários.
+- Semana 3: testes de componente.
+- Semana 4: testes de sistema e ajustes finais.
 
 ## 6. Ambiente e ferramentas
 
-Java 21, Maven, Quarkus 3.38.3, JUnit 5, Mockito, RestAssured, PMD e JaCoCo.
+Java 21, Maven, Quarkus, JUnit 5, Mockito, RestAssured, PMD e JaCoCo.
