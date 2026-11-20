@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="edu.ifrs.LoanResourceTest" time="0.45" tests="8" errors="0" skipped="0" failures="0" flakes="0">
+  <!-- propriedades do sistema removidas -->
+  <testcase name="shouldCreateLoanAndMarkBookAsLoaned" classname="edu.ifrs.LoanResourceTest" time="0.415"/>
+  <testcase name="shouldReturn404WhenReturningUnknownLoan" classname="edu.ifrs.LoanResourceTest" time="0.009"/>
+  <testcase name="shouldReturnLoanAndMarkBookAsReturned" classname="edu.ifrs.LoanResourceTest" time="0.004"/>
+  <testcase name="shouldReturn409WhenBookIsAlreadyLoaned" classname="edu.ifrs.LoanResourceTest" time="0.002"/>
+  <testcase name="shouldListBooksFromCatalog" classname="edu.ifrs.LoanResourceTest" time="0.003"/>
+  <testcase name="shouldFilterLoansByBorrowerIgnoringCase" classname="edu.ifrs.LoanResourceTest" time="0.003"/>
+  <testcase name="shouldReturn409WhenLoanWasAlreadyReturned" classname="edu.ifrs.LoanResourceTest" time="0.002"/>
+  <testcase name="shouldListAllLoansWhenNoFilter" classname="edu.ifrs.LoanResourceTest" time="0.005"/>
+</testsuite>
