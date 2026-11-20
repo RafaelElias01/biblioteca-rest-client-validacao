@@ -1,7 +1,7 @@
-GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-loans,edu.ifrs,LoanResource,0,140,0,12,0,27,0,11,0,5
-loans,edu.ifrs,UserResource,0,84,1,5,0,16,1,5,0,3
-loans,edu.ifrs.model,Book,0,15,0,0,0,1,0,1,0,1
-loans,edu.ifrs.model,User,0,15,0,0,0,1,0,1,0,1
-loans,edu.ifrs.model,LoanRequest,0,9,0,0,0,1,0,1,0,1
-loans,edu.ifrs.model,Loan,0,15,0,0,0,1,0,1,0,1
+CLASSE,LINHAS_NAO_TESTADAS,LINHAS_TESTADAS
+LoanResource,0,27
+UserResource,0,16
+Book,0,1
+User,0,1
+LoanRequest,0,1
+Loan,0,1
